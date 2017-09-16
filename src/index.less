@@ -1,13 +1,25 @@
-.arrow {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-  &.right {
-    transform: rotate(-45deg);
-  }
+.slide-show {
+  user-select: none;
 
-  &.left {
-    transform: rotate(135deg);
+  .arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 20px;
+    cursor: pointer;
+    &.right {
+      transform: rotate(-45deg);
+    }
+  
+    &.left {
+      transform: rotate(135deg);
+    }
+  }
+  
+  .item {
+    display: none;
+    &.active {
+      display: inline-block;
+    }
   }
 }
