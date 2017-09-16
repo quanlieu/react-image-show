@@ -1,11 +1,11 @@
 import React from 'react';
-import Hello from '../../src';
+import SliderShow from '../../src';
 
 export default class App extends React.PureComponent {
   render() {
     return (
      <div>
-        <Hello>Placeholder</Hello>
+        <SlideShow />
       </div>);
   }
 }
