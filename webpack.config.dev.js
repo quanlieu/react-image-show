@@ -13,6 +13,7 @@ module.exports = {
     path: path.resolve('dist'),
     filename: 'bundle.js'
   },
+  devtool: 'cheap-module-inline-source-map',
   module: {
     rules: [
       { test: /\.js$/, use: ['babel-loader'], exclude: /node_modules/ },
