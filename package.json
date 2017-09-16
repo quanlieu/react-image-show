@@ -1,6 +1,6 @@
 {
   "name": "quan-node-playground",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "",
   "main": "build/index.js",
   "scripts": {
@@ -28,7 +28,11 @@
     "css-loader": "^0.28.7",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.5",
     "path": "^0.12.7",
+    "postcss-cssnext": "^3.0.2",
+    "postcss-loader": "^2.0.6",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "style-loader": "^0.18.2",
