@@ -1,5 +1,6 @@
 import React from 'react';
-import './index.less'
+import Indicators from './components/indicators';
+import './index.less';
 
 class SlideShow extends React.PureComponent {
   constructor(props) {
@@ -12,6 +13,7 @@ class SlideShow extends React.PureComponent {
 
     this.handleLeftClick = this.handleLeftClick.bind(this);
     this.handleRightClick = this.handleRightClick.bind(this);
+    this.handleIndicatorClick = this.handleIndicatorClick.bind(this);
     this.goTo = this.goTo.bind(this);
   }
 
@@ -35,6 +37,10 @@ class SlideShow extends React.PureComponent {
     } else {
       this.goTo(0);
     }
+  }
+
+  handleIndicatorClick(e) {
+    this.goTo(+e.currentTarget.dataset.index);
   }
 
   goTo(activeIndex) {
@@ -61,6 +67,10 @@ class SlideShow extends React.PureComponent {
               <img src={v} key={i} />
             </div>
           ))}
+          <Indicators
+            count={length} activeIndex={activeIndex}
+            onClick={this.handleIndicatorClick}
+          />
         </div>
         <span className="arrow right" onClick={this.handleRightClick} />
       </div>

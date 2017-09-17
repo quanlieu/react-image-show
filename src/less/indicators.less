@@ -1,0 +1,24 @@
+.slide-show {
+  ul.indicators {
+    position: relative;
+    top: -50px;
+    text-align: center;
+    > li {
+      display: inline-block;
+      cursor: pointer;
+      > span {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border: 1px solid white;
+        border-radius: 50%;
+        margin: 0 5px;
+        padding: 0;
+        background: transparent;
+        &.active {
+          background-color: white;
+        }
+      }
+    }
+  }
+}
