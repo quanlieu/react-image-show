@@ -3,11 +3,16 @@
   width: inherit;
   top: 50%;
   transform: translateY(-50%);
+  display: none;
+
+  @media only screen and (min-width: @md) {
+    display: block;
+  }
 
   .arrow {
     border: solid black;
     border-width: 0 3px 3px 0;
-    padding: 20px;
+    padding: @arrow-width / 6;
     cursor: pointer;
     
     &.right {

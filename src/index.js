@@ -1,7 +1,7 @@
 import React from 'react';
 import Arrows from './components/arrows';
 import Indicators from './components/indicators';
-import './index.less';
+import './less/index.less';
 
 class SlideShow extends React.PureComponent {
   constructor(props) {

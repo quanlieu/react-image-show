@@ -1,6 +1,8 @@
+@import "variables";
+
 .slide-show {
-  @import (less) "less/indicators";
-  @import (less) "less/arrows";
+  @import (less) "indicators";
+  @import (less) "arrows";
 
   user-select: none;
   box-sizing: border-box;
@@ -8,17 +10,17 @@
   margin: auto;
   position: relative;
 
-  @media only screen and (min-width: 1024px) {
-    width: 920px;
-    height: 400px;
+  @media only screen and (min-width: @md) {
+    width: @md-width;
+    height: @md-height;
   }
   
   .item-container {
     position: relative;
     overflow: hidden;
     display: inline-block;
-    @media only screen and (min-width: 1024px) {
-      width: 800px;
+    @media only screen and (min-width: @md) {
+      width: @md-width - @arrow-width;
       height: inherit;
     }
   }
