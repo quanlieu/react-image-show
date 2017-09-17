@@ -59,8 +59,8 @@ class SlideShow extends React.PureComponent {
           {images.map((v, i) => (
             <div
               style={{
-                transform: `translate(${100 * (i - activeIndex)}% , 0)`,
-                transition: 'all 450ms ease-out'
+                transform: `translateX(${100 * (i - activeIndex)}%)`,
+                transition: 'all 500ms ease-out'
               }}
               key={i} className={`item${activeIndex === i ? " active" : ""}`}
             >
