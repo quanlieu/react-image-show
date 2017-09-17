@@ -43,14 +43,25 @@ class SlideShow extends React.PureComponent {
 
   render() {
     const { images } = this.props;
+    const length = images.length;
     const { activeIndex } = this.state;
     
     return (
       <div className="slide-show">
         <span className="arrow left" onClick={this.handleLeftClick} />
-        {images.map((v, i) => (
-          <img className={`item${activeIndex === i ? " active" : ""}`} src={v} key={i} />
-        ))}
+        <div className="item-container">
+          {images.map((v, i) => (
+            <div
+              style={{
+                transform: `translate(${100 * (i - activeIndex)}% , 0)`,
+                transition: 'all 450ms ease-out'
+              }}
+              key={i} className={`item${activeIndex === i ? " active" : ""}`}
+            >
+              <img src={v} key={i} />
+            </div>
+          ))}
+        </div>
         <span className="arrow right" onClick={this.handleRightClick} />
       </div>
     );

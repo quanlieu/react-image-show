@@ -1,5 +1,6 @@
 .slide-show {
   user-select: none;
+  box-sizing: border-box;
 
   .arrow {
     border: solid black;
@@ -16,10 +17,24 @@
     }
   }
   
+  .item-container {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    @media only screen and (min-width: 1024px) {
+      width: 992px;
+    }
+  }
   .item {
-    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: inherit;
     &.active {
-      display: inline-block;
+      position: static;
+    }
+    > img {
+      width: inherit;
     }
   }
 }
