@@ -1,22 +1,16 @@
 .slide-show {
   @import (less) "less/indicators";
+  @import (less) "less/arrows";
 
   user-select: none;
   box-sizing: border-box;
+  text-align: center;
+  margin: auto;
+  position: relative;
 
-  .arrow {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-    display: inline-block;
-    padding: 20px;
-    cursor: pointer;
-    &.right {
-      transform: rotate(-45deg);
-    }
-  
-    &.left {
-      transform: rotate(135deg);
-    }
+  @media only screen and (min-width: 1024px) {
+    width: 920px;
+    height: 400px;
   }
   
   .item-container {
@@ -24,7 +18,8 @@
     overflow: hidden;
     display: inline-block;
     @media only screen and (min-width: 1024px) {
-      width: 992px;
+      width: 800px;
+      height: inherit;
     }
   }
   .item {
@@ -32,6 +27,7 @@
     left: 0;
     top: 0;
     width: inherit;
+    height: inherit;
     &.active {
       position: static;
     }

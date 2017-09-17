@@ -1,4 +1,5 @@
 import React from 'react';
+import Arrows from './components/arrows';
 import Indicators from './components/indicators';
 import './index.less';
 
@@ -54,7 +55,9 @@ class SlideShow extends React.PureComponent {
     
     return (
       <div className="slide-show">
-        <span className="arrow left" onClick={this.handleLeftClick} />
+        <Arrows
+          onLeftClick={this.handleLeftClick} onRightClick={this.handleRightClick}
+        />
         <div className="item-container">
           {images.map((v, i) => (
             <div
@@ -72,7 +75,6 @@ class SlideShow extends React.PureComponent {
             onClick={this.handleIndicatorClick}
           />
         </div>
-        <span className="arrow right" onClick={this.handleRightClick} />
       </div>
     );
   }

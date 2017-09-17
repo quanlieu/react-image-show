@@ -1,0 +1,26 @@
+.arrows {
+  position: absolute;
+  width: inherit;
+  top: 50%;
+  transform: translateY(-50%);
+
+  .arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    padding: 20px;
+    cursor: pointer;
+    
+    &.right {
+      .float-and-rotate(right, -45deg);
+    }
+  
+    &.left {
+      .float-and-rotate(left, 135deg);
+    }
+  }
+}
+
+.float-and-rotate(@side, @deg) {
+  float: @side;
+  transform: rotate(@deg);
+}
