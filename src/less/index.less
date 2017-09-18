@@ -10,35 +10,37 @@
   margin: auto;
   position: relative;
   width: 100%;
-
-  @media only screen and (min-width: @md) {
-    width: @md-width;
-    height: @md-height;
-  }
   
-  .item-container {
+  .images-container {
     position: relative;
     overflow: hidden;
     display: inline-block;
     width: 100%;
-    height: 50vw;
-
-    @media only screen and (min-width: @md) {
-      width: @md-width - @arrow-width;
-      height: inherit;
-    }
   }
-  .item {
+  .slide-image {
     position: absolute;
     left: 0;
     top: 0;
     width: inherit;
     height: inherit;
+    text-align: center;
+    overflow: hidden;
+
+    &:before {
+      content: "";
+      margin-left: -100%;
+    }
+    &:after {
+      content: "";
+      margin-right: -100%;
+    }
+
     &.active {
       position: static;
     }
+
     > img {
-      width: inherit;
+      height: inherit;
     }
   }
 }
