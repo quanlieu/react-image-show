@@ -1,8 +1,10 @@
 @import "variables";
 
 .slide-show {
+  /* (less) is not needed, just keep it as a note */
   @import (less) "indicators";
   @import (less) "arrows";
+  @import (less) "images";
 
   user-select: none;
   box-sizing: border-box;
@@ -10,37 +12,4 @@
   margin: auto;
   position: relative;
   width: 100%;
-  
-  .images-container {
-    position: relative;
-    overflow: hidden;
-    display: inline-block;
-    width: 100%;
-  }
-  .slide-image {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: inherit;
-    height: inherit;
-    text-align: center;
-    overflow: hidden;
-
-    &:before {
-      content: "";
-      margin-left: -100%;
-    }
-    &:after {
-      content: "";
-      margin-right: -100%;
-    }
-
-    &.active {
-      position: static;
-    }
-
-    > img {
-      height: inherit;
-    }
-  }
 }

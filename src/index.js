@@ -1,6 +1,7 @@
 import React from 'react';
 import Arrows from './components/arrows';
 import Indicators from './components/indicators';
+import Images from './components/images';
 import { addStyleToHead, removeFromHead } from './utils/style-sheet.js'
 import './less/index.less';
 
@@ -111,24 +112,11 @@ class SlideShow extends React.PureComponent {
         <Arrows
           onLeftClick={this.handleLeftClick} onRightClick={this.handleRightClick}
         />
-        <div className="images-container images-container-size">
-          {images.map((v, i) => (
-            <div
-              style={{
-                transform: `translateX(${100 * (i - activeIndex)}%)`,
-                transition: 'all 500ms ease-out'
-              }}
-              className={`slide-image${activeIndex === i ? " active" : ""}`}
-              key={i}
-            >
-              <img src={v} key={i} />
-            </div>
-          ))}
-          <Indicators
-            count={length} activeIndex={activeIndex}
-            onClick={this.handleIndicatorClick}
-          />
-        </div>
+        <Images images={images} activeIndex={activeIndex} />
+        <Indicators
+          count={length} activeIndex={activeIndex}
+          onClick={this.handleIndicatorClick}
+        />
       </div>
     );
   }

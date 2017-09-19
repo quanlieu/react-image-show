@@ -1,0 +1,34 @@
+.images-container {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+.slide-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: inherit;
+  height: inherit;
+  text-align: center;
+  overflow: hidden;
+  transition: all 500ms ease-out;
+
+  &:before {
+    content: "";
+    margin-left: -100%;
+  }
+  &:after {
+    content: "";
+    margin-right: -100%;
+  }
+
+  &.active {
+    position: static;
+  }
+
+  > img {
+    height: inherit;
+  }
+}
