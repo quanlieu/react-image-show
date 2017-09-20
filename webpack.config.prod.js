@@ -17,5 +17,5 @@ module.exports = {
       }
     ]
   },
-  externals: ['react', 'react-dom']
+  externals: ['react']
 }
