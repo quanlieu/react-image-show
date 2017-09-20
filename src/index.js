@@ -114,7 +114,12 @@ class SlideShow extends React.PureComponent {
         <Arrows
           onLeftClick={this.handleLeftClick} onRightClick={this.handleRightClick}
         />
-        <Images images={images} activeIndex={activeIndex} />
+        <Images
+          images={images}
+          activeIndex={activeIndex}
+          onGoLeft={this.handleLeftClick}
+          onGoRight={this.handleRightClick}
+        />
         <Indicators
           count={length} activeIndex={activeIndex}
           onClick={this.handleIndicatorClick}
