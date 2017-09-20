@@ -78,9 +78,10 @@ class SlideShow extends React.PureComponent {
 
     if (activeIndex !== 0) {
       this.goTo(this.state.activeIndex - 1);
-    } else {
-      this.goTo(length - 1);
     }
+    // else {
+    //   this.goTo(length - 1);
+    // }
   }
 
   handleRightClick() {
@@ -89,9 +90,10 @@ class SlideShow extends React.PureComponent {
 
     if (activeIndex !== length - 1) {
       this.goTo(this.state.activeIndex + 1);
-    } else {
-      this.goTo(0);
     }
+    // else {
+    //   this.goTo(0);
+    // }
   }
 
   handleIndicatorClick(e) {
