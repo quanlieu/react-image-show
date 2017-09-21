@@ -2,7 +2,7 @@ import React from 'react';
 import Arrows from './components/arrows';
 import Indicators from './components/indicators';
 import Images from './components/images';
-import { addStyleToHead, removeFromHead } from './utils/style-sheet.js'
+import { addStyleToHead, removeStyleFromHead } from './utils/style-sheet.js';
 import './less/index.less';
 
 // Left right arrows only appear in desktop
@@ -31,9 +31,9 @@ class SlideShow extends React.PureComponent {
   createCss() {
     const { width, imgWidth, imgHeight, imgHeightMobile, fixedHeight } = this.props;
     const mediaString = '@media screen and (min-width: 992px)';
-    let cssNodes = [];
+    let styleNodes = [];
 
-    cssNodes.push(addStyleToHead(
+    styleNodes.push(addStyleToHead(
       {
         selector: '.slide-show.slide-show-size',
         content: `width:${width};`
@@ -42,7 +42,7 @@ class SlideShow extends React.PureComponent {
     ));
 
     if (fixedHeight) {
-      cssNodes.push(
+      styleNodes.push(
         addStyleToHead([
           {
             selector: '.images-container.images-container-size',
@@ -51,7 +51,7 @@ class SlideShow extends React.PureComponent {
         ])
       );
   
-      cssNodes.push(
+      styleNodes.push(
         addStyleToHead(
           [
             {
@@ -63,7 +63,7 @@ class SlideShow extends React.PureComponent {
         )
       );
     } else {
-      cssNodes.push(
+      styleNodes.push(
         addStyleToHead(
           [
             {
@@ -76,14 +76,11 @@ class SlideShow extends React.PureComponent {
       );
     }
 
-    this.cssNodes = cssNodes;
+    this.styleNodes = styleNodes;
   }
 
   componentWillUnmount() {
-    const { cssNodes } = this;
-    for (let i = 0; i < cssNodes.length; i++) {
-      removeFromHead(cssNodes[i]);
-    }
+    removeStyleFromHead(this.styleNodes);
   }
 
   handleLeftClick() {

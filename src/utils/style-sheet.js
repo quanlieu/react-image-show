@@ -25,8 +25,14 @@ const addStyleToHead = (styles, mediaRule) => {
  * Remove DOM node from head
  * @param {Node} node Node to remove
  */
-const removeStyleFromHead = (node) => {
-  document.head.removeChild(node);
+const removeStyleFromHead = (nodes) => {
+  if (Array.isArray(nodes)) {
+    for (let i = 0; i < nodes.length; i++) {
+      document.head.removeChild(nodes[i]);
+    }
+  } else {
+    document.head.removeChild(nodes);
+  }
 };
 
 function createCssContent(styles) {
