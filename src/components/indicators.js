@@ -6,16 +6,16 @@ const Indicators = props => {
 
   for (let i = 0; i < count; i++) {
     indicators.push(
-      <li key={i} onClick={onClick} data-index={i}>
+      <div key={i} onClick={onClick} data-index={i}>
         <span className={i === activeIndex ? "active" : ""}/>
-      </li>
+      </div>
     );
   }
 
   return (
-    <ul className="indicators">
+    <div className="indicators">
       {indicators}
-    </ul>
+    </div>
   )
 };
 
