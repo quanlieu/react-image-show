@@ -10,7 +10,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 module.exports = {
   entry: './example/index',
   output: {
-    path: path.resolve('dist'),
+    path: path.resolve('example-build'),
     filename: 'bundle.js'
   },
   devtool: 'cheap-module-inline-source-map',
