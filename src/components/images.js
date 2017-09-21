@@ -97,7 +97,7 @@ class Images extends React.PureComponent {
   render() {
     const { activeIndex, images, fixedHeight } = this.props;
     const { isDragging, dragX } = this.state;
-    
+
     return (
       <div className={`images-container images-container-size${fixedHeight ? " fixed-height" : ""}`}>
         {images.map((v, i) => (
@@ -120,6 +120,6 @@ class Images extends React.PureComponent {
       </div>
     );
   }
-};
+}
 
 export default Images;

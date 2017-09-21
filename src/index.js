@@ -2,6 +2,7 @@ import React from 'react';
 import Arrows from './components/arrows';
 import Indicators from './components/indicators';
 import Images from './components/images';
+import Thumbnails from './components/thumbnails';
 import { addStyleToHead, removeStyleFromHead } from './utils/style-sheet.js';
 import './less/index.less';
 
@@ -29,7 +30,9 @@ class SlideShow extends React.PureComponent {
   }
 
   createCss() {
-    const { width, imgWidth, imgHeight, imgHeightMobile, fixedHeight } = this.props;
+    const {
+      width, imgWidth, imgHeight, imgHeightMobile, fixedHeight
+    } = this.props;
     const mediaString = '@media screen and (min-width: 992px)';
     let styleNodes = [];
 
@@ -81,9 +84,11 @@ class SlideShow extends React.PureComponent {
   }
 
   render() {
-    const { images, imgWidth, imgHeight, imgHeightMobile, fixedHeight } = this.props;
-    const length = images.length;
+    const {
+      images, imgWidth, imgHeight, imgHeightMobile, fixedHeight, thumbnailsWidth
+    } = this.props;
     const { activeIndex } = this.state;
+    const length = images.length;
     
     return (
       <div className="slide-show slide-show-size">
@@ -103,6 +108,12 @@ class SlideShow extends React.PureComponent {
         <Indicators
           count={length} activeIndex={activeIndex}
           onClick={this.handleIndicatorClick}
+        />
+        <Thumbnails
+          images={images}
+          thumbnailsWidth={thumbnailsWidth}
+          activeIndex={activeIndex}
+          goTo={this.goTo}
         />
       </div>
     );

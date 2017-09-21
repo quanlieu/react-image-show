@@ -1,0 +1,29 @@
+.thumbnails {
+  overflow: hidden;
+}
+
+.thumbnails-track {
+  position: relative;
+  white-space: nowrap;
+  transition: all 500ms ease-out;
+}
+
+.thumbnail {
+  display: inline-block;
+  width: 20%;
+  padding: 3px;
+
+  > img {
+    max-width: 100%;
+    vertical-align: middle;
+    &.active {
+      outline: 3px solid #337ab7;
+    }
+  }
+}
+
+@media only screen and (min-width: @sm) {
+  .thumbnail {
+    width: 15%;
+  }
+}
