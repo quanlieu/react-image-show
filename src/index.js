@@ -29,7 +29,7 @@ class SlideShow extends React.PureComponent {
   }
 
   createCss() {
-    const { width, imgWidth, imgHeight, imgHeightMobile } = this.props;
+    const { width, imgWidth, imgHeight, imgHeightMobile, fixedHeight } = this.props;
     const mediaString = '@media screen and (min-width: 992px)';
     let cssNodes = [];
 
@@ -41,26 +41,40 @@ class SlideShow extends React.PureComponent {
       mediaString
     ));
 
-    cssNodes.push(
-      addStyleToHead([
-        {
-          selector: '.images-container.images-container-size',
-          content: `height:${imgHeightMobile};`
-        }
-      ])
-    );
-
-    cssNodes.push(
-      addStyleToHead(
-        [
+    if (fixedHeight) {
+      cssNodes.push(
+        addStyleToHead([
           {
             selector: '.images-container.images-container-size',
-            content: `width:${imgWidth};height:${imgHeight};`
+            content: `height:${imgHeightMobile};`
           }
-        ],
-        mediaString
-      )
-    );
+        ])
+      );
+  
+      cssNodes.push(
+        addStyleToHead(
+          [
+            {
+              selector: '.images-container.images-container-size',
+              content: `width:${imgWidth};height:${imgHeight};`
+            }
+          ],
+          mediaString
+        )
+      );
+    } else {
+      cssNodes.push(
+        addStyleToHead(
+          [
+            {
+              selector: '.images-container.images-container-size',
+              content: `width:${imgWidth};`
+            }
+          ],
+          mediaString
+        )
+      );
+    }
 
     this.cssNodes = cssNodes;
   }
@@ -105,7 +119,7 @@ class SlideShow extends React.PureComponent {
   }
 
   render() {
-    const { images } = this.props;
+    const { images, fixedHeight } = this.props;
     const length = images.length;
     const { activeIndex } = this.state;
     
@@ -119,6 +133,7 @@ class SlideShow extends React.PureComponent {
           activeIndex={activeIndex}
           onGoLeft={this.handleLeftClick}
           onGoRight={this.handleRightClick}
+          fixedHeight={fixedHeight}
         />
         <Indicators
           count={length} activeIndex={activeIndex}
@@ -133,7 +148,8 @@ SlideShow.defaultProps = {
   width: '920px',
   imgWidth: '800px',
   imgHeight: '450px',
-  imgHeightMobile: '56vw'
+  imgHeightMobile: '56vw',
+  fixedHeight: false
 };
 
 export default SlideShow

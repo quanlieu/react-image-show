@@ -10,25 +10,35 @@
   left: 0;
   top: 0;
   width: inherit;
-  height: inherit;
   text-align: center;
-  overflow: hidden;
   transition: all 500ms ease-out;
-
-  &:before {
-    content: "";
-    margin-left: -100%;
-  }
-  &:after {
-    content: "";
-    margin-right: -100%;
-  }
 
   &.active {
     position: static;
   }
 
   > img {
+    width: inherit;
+  }
+}
+
+.fixed-height {
+  .slide-image {
     height: inherit;
+    overflow: hidden;
+  
+    &:before {
+      content: "";
+      margin-left: -100%;
+    }
+    &:after {
+      content: "";
+      margin-right: -100%;
+    }
+
+    > img {
+      width: auto;
+      height: inherit;
+    }
   }
 }
