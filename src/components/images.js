@@ -1,4 +1,5 @@
 import React from 'react';
+import { addStyleToHead, removeStyleFromHead } from '../utils/style-sheet.js';
 
 class Images extends React.PureComponent {
   constructor(props) {
@@ -9,10 +10,60 @@ class Images extends React.PureComponent {
       dragX: 0
     }
 
+    this.createCss = this.createCss.bind(this);
     this.handleTouchImage = this.handleTouchImage.bind(this);
     this.handleMoveImage = this.handleMoveImage.bind(this);
     this.handleTouchEnd = this.handleTouchEnd.bind(this);
     this.handleTouchCancel = this.handleTouchCancel.bind(this);
+
+    this.styleNodes = this.createCss();
+  }
+
+  createCss() {
+    const { imgWidth, imgHeight, imgHeightMobile, fixedHeight } = this.props;
+    const mediaString = '@media screen and (min-width: 992px)';
+    let styleNodes = [];
+
+    if (fixedHeight) {
+      styleNodes.push(
+        addStyleToHead([
+          {
+            selector: '.images-container.images-container-size',
+            content: `height:${imgHeightMobile};`
+          }
+        ])
+      );
+  
+      styleNodes.push(
+        addStyleToHead(
+          [
+            {
+              selector: '.images-container.images-container-size',
+              content: `width:${imgWidth};height:${imgHeight};`
+            }
+          ],
+          mediaString
+        )
+      );
+    } else {
+      styleNodes.push(
+        addStyleToHead(
+          [
+            {
+              selector: '.images-container.images-container-size',
+              content: `width:${imgWidth};`
+            }
+          ],
+          mediaString
+        )
+      );
+    }
+
+    this.styleNodes = styleNodes;
+  }
+
+  componentWillUnmount() {
+    removeStyleFromHead(this.styleNodes);
   }
 
   handleTouchImage(e) {

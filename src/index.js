@@ -41,41 +41,6 @@ class SlideShow extends React.PureComponent {
       mediaString
     ));
 
-    if (fixedHeight) {
-      styleNodes.push(
-        addStyleToHead([
-          {
-            selector: '.images-container.images-container-size',
-            content: `height:${imgHeightMobile};`
-          }
-        ])
-      );
-  
-      styleNodes.push(
-        addStyleToHead(
-          [
-            {
-              selector: '.images-container.images-container-size',
-              content: `width:${imgWidth};height:${imgHeight};`
-            }
-          ],
-          mediaString
-        )
-      );
-    } else {
-      styleNodes.push(
-        addStyleToHead(
-          [
-            {
-              selector: '.images-container.images-container-size',
-              content: `width:${imgWidth};`
-            }
-          ],
-          mediaString
-        )
-      );
-    }
-
     this.styleNodes = styleNodes;
   }
 
@@ -116,7 +81,7 @@ class SlideShow extends React.PureComponent {
   }
 
   render() {
-    const { images, fixedHeight } = this.props;
+    const { images, imgWidth, imgHeight, imgHeightMobile, fixedHeight } = this.props;
     const length = images.length;
     const { activeIndex } = this.state;
     
@@ -131,6 +96,9 @@ class SlideShow extends React.PureComponent {
           onGoLeft={this.handleLeftClick}
           onGoRight={this.handleRightClick}
           fixedHeight={fixedHeight}
+          imgWidth={imgWidth}
+          imgHeight={imgHeight}
+          imgHeightMobile={imgHeightMobile}
         />
         <Indicators
           count={length} activeIndex={activeIndex}
@@ -144,6 +112,7 @@ class SlideShow extends React.PureComponent {
 SlideShow.defaultProps = {
   width: '920px',
   imgWidth: '800px',
+  thumbnailsWidth: '920px',
   imgHeight: '450px',
   imgHeightMobile: '56vw',
   fixedHeight: false
