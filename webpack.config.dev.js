@@ -14,6 +14,9 @@ module.exports = {
     filename: 'bundle.js'
   },
   devtool: 'cheap-module-inline-source-map',
+  devServer: {
+    host: '0.0.0.0'
+  },
   module: {
     rules: [
       { test: /\.js$/, use: ['babel-loader'], exclude: /node_modules/ },
