@@ -24,16 +24,18 @@ class Images extends React.PureComponent {
   }
 
   createCss() {
-    const { imgWidth, imgHeight, imgHeightMobile, fixedHeight } = this.props;
+    const {
+      imagesWidth, imagesHeight, imagesHeightMobile, fixedImagesHeight
+    } = this.props;
     const mediaString = '@media screen and (min-width: 992px)';
     let styleNodes = [];
 
-    if (fixedHeight) {
+    if (fixedImagesHeight) {
       styleNodes.push(
         addStyleToHead([
           {
             selector: '.slide-show .images-size',
-            content: `height:${imgHeightMobile};`
+            content: `height:${imagesHeightMobile};`
           }
         ])
       );
@@ -43,7 +45,7 @@ class Images extends React.PureComponent {
           [
             {
               selector: '.slide-show .images-size',
-              content: `width:${imgWidth};height:${imgHeight};`
+              content: `width:${imagesWidth};height:${imagesHeight};`
             }
           ],
           mediaString
@@ -55,7 +57,7 @@ class Images extends React.PureComponent {
           [
             {
               selector: '.slide-show .images-size',
-              content: `width:${imgWidth};`
+              content: `width:${imagesWidth};`
             }
           ],
           mediaString
@@ -76,7 +78,7 @@ class Images extends React.PureComponent {
   }
 
   calculateTrackStyle(activeIndex) {
-    const { fixedHeight } = this.props;
+    const { fixedImagesHeight } = this.props;
     const activeImage = this.imagesTrack.childNodes[activeIndex];
     const imageBoundingClientRect = activeImage.getBoundingClientRect();
     // Images width and track width are the same
@@ -85,7 +87,7 @@ class Images extends React.PureComponent {
     
     return {
       transform: `translateX(${translateX}px)`,
-      height: fixedHeight ? 'inherit' : imageBoundingClientRect.height + 'px'
+      height: fixedImagesHeight ? 'inherit' : imageBoundingClientRect.height + 'px'
     }
   }
 
@@ -138,12 +140,12 @@ class Images extends React.PureComponent {
   }
 
   render() {
-    const { activeIndex, images, fixedHeight } = this.props;
+    const { activeIndex, images, fixedImagesHeight } = this.props;
     const { isSwiping, imagesTrackStyle, m } = this.state;
 
     return (
       <div
-        className={`images images-size${fixedHeight ? " fixed-height" : ""}`}
+        className={`images images-size${fixedImagesHeight ? " fixed-height" : ""}`}
       >
         <div
           className={`images-track${isSwiping ? " swiping" : ""}`}

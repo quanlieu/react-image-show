@@ -11,8 +11,8 @@ import './less/index.less';
 // On mobile, width always 100% only height can be set
 // fixheight: fit height and then crop width to main aspect ratio,
 //     too narrow images will be center
+// For IE = 10, need dataset polyfill, 
 
-// TODO: dataset polyfill for IE, fixHeight for thumbnail, translate for thumbnal, deploy
 class SlideShow extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -33,7 +33,7 @@ class SlideShow extends React.PureComponent {
 
   createCss() {
     const {
-      width, imgWidth, imgHeight, imgHeightMobile, fixedHeight
+      width, imagesWidth, imagesHeight, imagesHeightMobile, fixedImagesHeight
     } = this.props;
     const mediaString = '@media screen and (min-width: 992px)';
     let styleNodes = [];
@@ -87,7 +87,7 @@ class SlideShow extends React.PureComponent {
 
   render() {
     const {
-      images, imgWidth, imgHeight, imgHeightMobile, fixedHeight, thumbnailsWidth
+      images, imagesWidth, imagesHeight, imagesHeightMobile, fixedImagesHeight, thumbnailsWidth
     } = this.props;
     const { activeIndex } = this.state;
     const length = images.length;
@@ -102,10 +102,10 @@ class SlideShow extends React.PureComponent {
           activeIndex={activeIndex}
           onGoLeft={this.handleLeftClick}
           onGoRight={this.handleRightClick}
-          fixedHeight={fixedHeight}
-          imgWidth={imgWidth}
-          imgHeight={imgHeight}
-          imgHeightMobile={imgHeightMobile}
+          fixedImagesHeight={fixedImagesHeight}
+          imagesWidth={imagesWidth}
+          imagesHeight={imagesHeight}
+          imagesHeightMobile={imagesHeightMobile}
         />
         <Indicators
           count={length} activeIndex={activeIndex}
@@ -116,6 +116,7 @@ class SlideShow extends React.PureComponent {
           thumbnailsWidth={thumbnailsWidth}
           activeIndex={activeIndex}
           goTo={this.goTo}
+          fixedImagesHeight={fixedImagesHeight}
         />
       </div>
     );
@@ -124,11 +125,12 @@ class SlideShow extends React.PureComponent {
 
 SlideShow.defaultProps = {
   width: '920px',
-  imgWidth: '800px',
+  imagesWidth: '800px',
   thumbnailsWidth: '920px',
-  imgHeight: '450px',
-  imgHeightMobile: '56vw',
-  fixedHeight: false
+  thumbnailsHeight: '12vw',
+  imagesHeight: '450px',
+  imagesHeightMobile: '56vw',
+  fixedImagesHeight: false
 };
 
 export default SlideShow
