@@ -6,7 +6,7 @@ class Thumbnails extends React.PureComponent {
     super(props);
 
     this.state = {
-      thumbnailsTrackStyle: { left: '0px' }
+      thumbnailsTrackStyle: {}
     }
     this.handleImageClick = this.handleImageClick.bind(this);
     this.createCss();
@@ -33,7 +33,7 @@ class Thumbnails extends React.PureComponent {
     const left = this.calculateOffsetLeft(activeIndex);
     this.setState({
       thumbnailsTrackStyle: {
-        left: left + 'px'
+        transform: `translateX(${left}px)`,
       }
     })
   }
