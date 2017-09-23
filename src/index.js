@@ -11,7 +11,7 @@ import './less/index.less';
 // On mobile, width always 100% only height can be set
 // fixheight: fit height and then crop width to main aspect ratio,
 //     too narrow images will be center
-// For IE = 10, need dataset polyfill, 
+// For IE = 10, need dataset polyfill
 
 class SlideShow extends React.PureComponent {
   constructor(props) {
@@ -93,31 +93,36 @@ class SlideShow extends React.PureComponent {
     const length = images.length;
     
     return (
-      <div className="slide-show slide-show-size">
-        <Arrows
-          onLeftClick={this.handleLeftClick} onRightClick={this.handleRightClick}
-        />
-        <Images
-          images={images}
-          activeIndex={activeIndex}
-          onGoLeft={this.handleLeftClick}
-          onGoRight={this.handleRightClick}
-          fixedImagesHeight={fixedImagesHeight}
-          imagesWidth={imagesWidth}
-          imagesHeight={imagesHeight}
-          imagesHeightMobile={imagesHeightMobile}
-        />
-        <Indicators
-          count={length} activeIndex={activeIndex}
-          onClick={this.handleIndicatorClick}
-        />
-        <Thumbnails
-          images={images}
-          thumbnailsWidth={thumbnailsWidth}
-          activeIndex={activeIndex}
-          goTo={this.goTo}
-          fixedImagesHeight={fixedImagesHeight}
-        />
+      <div>
+        <div className="slide-show slide-show-size">
+          <Arrows
+            onLeftClick={this.handleLeftClick}
+            onRightClick={this.handleRightClick}
+          />
+          <Images
+            images={images}
+            activeIndex={activeIndex}
+            onGoLeft={this.handleLeftClick}
+            onGoRight={this.handleRightClick}
+            fixedImagesHeight={fixedImagesHeight}
+            imagesWidth={imagesWidth}
+            imagesHeight={imagesHeight}
+            imagesHeightMobile={imagesHeightMobile}
+          />
+          <Indicators
+            count={length} activeIndex={activeIndex}
+            onClick={this.handleIndicatorClick}
+          />
+        </div>
+        <div className="slide-show slide-show-size">
+          <Thumbnails
+            images={images}
+            thumbnailsWidth={thumbnailsWidth}
+            activeIndex={activeIndex}
+            goTo={this.goTo}
+            fixedImagesHeight={fixedImagesHeight}
+          />
+        </div>
       </div>
     );
   }
