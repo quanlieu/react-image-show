@@ -35,6 +35,21 @@ const removeStyleFromHead = (nodes) => {
   }
 };
 
+/**
+ * Remove DOM node from head
+ * @param {Node} node Node to get translate x
+ * @returns {Object} with x and y, number type
+ */
+const getTranslateXY = (node) => {
+  const matrix = window.getComputedStyle(node).transform;
+  if (!matrix) {
+    return {x: 0, y: 0};
+  }
+
+  const splitted = matrix.split(",");
+  return { x: parseInt(splitted[4]), y: parseInt(splitted[5]) };
+}
+
 function createCssContent(styles) {
   if (!Array.isArray(styles)) {
     return `${styles.selector}{${styles.content}}`;
@@ -47,4 +62,4 @@ function createCssContent(styles) {
   return result;
 }
 
-export { addStyleToHead, removeStyleFromHead };
+export { addStyleToHead, removeStyleFromHead, getTranslateXY };

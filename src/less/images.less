@@ -1,21 +1,27 @@
-.images-container {
+.images {
   position: relative;
   overflow: hidden;
   display: inline-block;
   width: 100%;
 }
 
-.slide-image {
-  position: absolute;
-  left: 0;
-  top: 0;
+.images-track {
+  white-space: nowrap;
   width: inherit;
-  text-align: center;
+  height: inherit;
   transition: all 500ms ease-out;
+}
 
-  &.active {
-    position: static;
-  }
+.swiping {
+  transition-property: none;
+}
+
+.slide-image {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  transition: all 500ms ease-out;
+  width: inherit;
 
   > img {
     width: inherit;

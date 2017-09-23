@@ -28,7 +28,7 @@ export default class App extends React.PureComponent {
   render() {
     return (
      <div>
-        <SlideShow images={this.images} fixedHeight />
+        <SlideShow images={this.images} />
       </div>);
   }
 }

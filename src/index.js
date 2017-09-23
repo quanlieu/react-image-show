@@ -9,8 +9,10 @@ import './less/index.less';
 // Left right arrows only appear in desktop
 // On desktop, width and height can be set
 // On mobile, width always 100% only height can be set
-// The behavior is to fit height and then crop width to main aspect ratio,
+// fixheight: fit height and then crop width to main aspect ratio,
 //     too narrow images will be center
+
+// TODO: dataset polyfill for IE, fixHeight for thumbnail, translate for thumbnal, deploy
 class SlideShow extends React.PureComponent {
   constructor(props) {
     super(props);

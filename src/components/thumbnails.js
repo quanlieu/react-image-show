@@ -19,23 +19,13 @@ class Thumbnails extends React.PureComponent {
 
     styleNodes.push(addStyleToHead(
       {
-        selector: '.thumbnails',
+        selector: '.slide-show .thumbnails',
         content: `width:${thumbnailsWidth};`
       },
       mediaString
     ));
 
     this.styleNodes = styleNodes;
-  }
-
-  componentDidMount() {
-    const { activeIndex } = this.props;
-    const left = this.calculateOffsetLeft(activeIndex);
-    this.setState({
-      thumbnailsTrack: {
-        left: left + 'px'
-      }
-    })
   }
 
   componentWillReceiveProps(nextProps) {
