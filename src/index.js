@@ -6,21 +6,12 @@ import Thumbnails from './components/thumbnails';
 import { addStyleToHead, removeStyleFromHead } from './utils/style-sheet.js';
 import './less/index.less';
 
-// Left right arrows only appear in desktop
-// On desktop, width and height can be set
-// On mobile, width always 100% only height can be set
-// fixheight: fit height and then crop width to main aspect ratio,
-//     too narrow images will be center
-// For IE = 10, need dataset polyfill
-
 class SlideShow extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       activeIndex: 0
     };
-
-    this.length = props.images.length;
 
     this.createCss = this.createCss.bind(this);
     this.handleLeftClick = this.handleLeftClick.bind(this);
@@ -55,7 +46,6 @@ class SlideShow extends React.PureComponent {
 
   handleLeftClick() {
     const { activeIndex } = this.state;
-    const { length } = this;
 
     if (activeIndex !== 0) {
       this.goTo(this.state.activeIndex - 1);
@@ -67,7 +57,7 @@ class SlideShow extends React.PureComponent {
 
   handleRightClick() {
     const { activeIndex } = this.state;
-    const { length } = this;
+    const { length } = this.props;
 
     if (activeIndex !== length - 1) {
       this.goTo(this.state.activeIndex + 1);
@@ -87,18 +77,24 @@ class SlideShow extends React.PureComponent {
 
   render() {
     const {
-      images, imagesWidth, imagesHeight, imagesHeightMobile, fixedImagesHeight, thumbnailsWidth
+      images, indicators, thumbnails, arrows, fixedImagesHeight, 
+      imagesWidth, imagesHeight, imagesHeightMobile, thumbnailsWidth
     } = this.props;
     const { activeIndex } = this.state;
+
+    if (!images || !images.length) {
+      return <div />;
+    }
+
     const length = images.length;
-    
+
     return (
       <div>
         <div className="slide-show slide-show-size">
-          <Arrows
+          {arrows && <Arrows
             onLeftClick={this.handleLeftClick}
             onRightClick={this.handleRightClick}
-          />
+          />}
           <Images
             images={images}
             activeIndex={activeIndex}
@@ -109,12 +105,12 @@ class SlideShow extends React.PureComponent {
             imagesHeight={imagesHeight}
             imagesHeightMobile={imagesHeightMobile}
           />
-          <Indicators
+          {indicators && <Indicators
             count={length} activeIndex={activeIndex}
             onClick={this.handleIndicatorClick}
-          />
+          />}
         </div>
-        <div className="slide-show slide-show-size">
+        {thumbnails && <div className="slide-show slide-show-size">
           <Thumbnails
             images={images}
             thumbnailsWidth={thumbnailsWidth}
@@ -122,20 +118,24 @@ class SlideShow extends React.PureComponent {
             goTo={this.goTo}
             fixedImagesHeight={fixedImagesHeight}
           />
-        </div>
+        </div>}
       </div>
     );
   }
 }
 
 SlideShow.defaultProps = {
+  images: [],
   width: '920px',
   imagesWidth: '800px',
   thumbnailsWidth: '920px',
   thumbnailsHeight: '12vw',
   imagesHeight: '450px',
   imagesHeightMobile: '56vw',
-  fixedImagesHeight: false
+  arrows: true,
+  fixedImagesHeight: false,
+  indicators: false,
+  thumbnails: false
 };
 
 export default SlideShow
