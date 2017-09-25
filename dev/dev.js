@@ -35,7 +35,6 @@ export default class Dev extends React.PureComponent {
       isShowIndicators, isShowThumbnails, isShowArrows, isShowFixedHeight
     } = this.state
     
-    console.log(isShowFixedHeight);
     return (
       <div>
         <h1>Adjust some of these setting</h1>

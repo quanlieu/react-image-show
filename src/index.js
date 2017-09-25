@@ -56,8 +56,8 @@ class SlideShow extends React.PureComponent {
 
   handleRightClick() {
     const { activeIndex } = this.state;
-    const { length } = this.props;
-
+    const { length } = this.props.images;
+    console.log(activeIndex, length)
     if (activeIndex !== length - 1) {
       this.goTo(this.state.activeIndex + 1);
     }
