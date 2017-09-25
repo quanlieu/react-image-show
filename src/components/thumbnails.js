@@ -8,11 +8,12 @@ class Thumbnails extends React.PureComponent {
     this.state = {
       thumbnailsTrackStyle: {}
     }
+    
+    this.styleNodes = this.createCss(props);
     this.handleImageClick = this.handleImageClick.bind(this);
-    this.createCss();
   }
 
-  createCss() {
+  createCss(props) {
     const { thumbnailsWidth } = this.props;
     const mediaString = '@media screen and (min-width: 992px)';
     let styleNodes = [];
@@ -25,7 +26,7 @@ class Thumbnails extends React.PureComponent {
       mediaString
     ));
 
-    this.styleNodes = styleNodes;
+    return styleNodes;
   }
 
   componentWillReceiveProps(nextProps) {

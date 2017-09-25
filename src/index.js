@@ -13,19 +13,18 @@ class SlideShow extends React.PureComponent {
       activeIndex: 0
     };
 
-    this.createCss = this.createCss.bind(this);
+    this.styleNodes = this.createCss(props);
+
     this.handleLeftClick = this.handleLeftClick.bind(this);
     this.handleRightClick = this.handleRightClick.bind(this);
     this.handleIndicatorClick = this.handleIndicatorClick.bind(this);
     this.goTo = this.goTo.bind(this);
-
-    this.createCss();
   }
 
-  createCss() {
+  createCss(props) {
     const {
       width, imagesWidth, imagesHeight, imagesHeightMobile, fixedImagesHeight
-    } = this.props;
+    } = props;
     const mediaString = '@media screen and (min-width: 992px)';
     let styleNodes = [];
 
@@ -37,7 +36,7 @@ class SlideShow extends React.PureComponent {
       mediaString
     ));
 
-    this.styleNodes = styleNodes;
+    return styleNodes;
   }
 
   componentWillUnmount() {

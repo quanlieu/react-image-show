@@ -13,20 +13,19 @@ class Images extends React.PureComponent {
       imagesTrackStyle: {}
     }
 
-    this.createCss = this.createCss.bind(this);
+    this.styleNodes = this.createCss(props);
+
     this.handleLoaded = this.handleLoaded.bind(this);
     this.handleTouchImage = this.handleTouchImage.bind(this);
     this.handleMoveImage = this.handleMoveImage.bind(this);
     this.handleTouchEnd = this.handleTouchEnd.bind(this);
     this.handleTouchCancel = this.handleTouchCancel.bind(this);
-
-    this.styleNodes = this.createCss();
   }
 
-  createCss() {
+  createCss(props) {
     const {
       imagesWidth, imagesHeight, imagesHeightMobile, fixedImagesHeight
-    } = this.props;
+    } = props;
     const mediaString = '@media screen and (min-width: 992px)';
     let styleNodes = [];
 
@@ -65,7 +64,7 @@ class Images extends React.PureComponent {
       );
     }
 
-    this.styleNodes = styleNodes;
+    return styleNodes;
   }
 
   componentWillUnmount() {
