@@ -14,6 +14,22 @@
     "type": "git",
     "url": "git+https://github.com/quanlieu/quan-node-playground.git"
   },
+  "keywords": [
+    "react",
+    "carousel",
+    "react-component",
+    "react-carousel",
+    "react-slideshow",
+    "react-gallery",
+    "react carousel",
+    "react slideshow",
+    "react gallery",
+    "image gallery",
+    "image slide",
+    "slideshow",
+    "gallery",
+    "slide"
+  ],
   "author": "Quan Lieu <lieuchiquan@gmail.com>",
   "license": "MIT",
   "bugs": {
