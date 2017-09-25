@@ -1,13 +1,13 @@
-.thumbnails {
+.ss-thumbnails {
   overflow: hidden;
 }
 
-.thumbnails-track {
+.ss-thumbnails-track {
   white-space: nowrap;
   transition: all 500ms ease-out;
 }
 
-.thumbnail {
+.ss-thumbnail {
   display: inline-block;
   width: 20%;
   padding: 3px;
@@ -16,14 +16,14 @@
   > img {
     max-width: 100%;
     vertical-align: middle;
-    &.active {
+    &.ss-active {
       outline: 3px solid #337ab7;
     }
   }
 }
 
 @media only screen and (min-width: @sm) {
-  .thumbnail {
+  .ss-thumbnail {
     width: 15%;
   }
 }

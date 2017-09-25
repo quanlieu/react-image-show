@@ -4,7 +4,7 @@ Simple React images slide show (carousel)
 
 ## Install
 
-`npm -i react-image-show`
+`npm i react-image-show`
 
 ## Demo
 

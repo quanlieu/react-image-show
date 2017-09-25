@@ -7,13 +7,13 @@ const Indicators = props => {
   for (let i = 0; i < count; i++) {
     indicators.push(
       <div key={i} onClick={onClick} data-index={i}>
-        <span className={i === activeIndex ? "active" : ""}/>
+        <span className={i === activeIndex ? "ss-active" : ""}/>
       </div>
     );
   }
 
   return (
-    <div className="indicators">
+    <div className="ss-indicators">
       {indicators}
     </div>
   )

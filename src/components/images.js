@@ -33,7 +33,7 @@ class Images extends React.PureComponent {
       styleNodes.push(
         addStyleToHead([
           {
-            selector: '.slide-show .images-size',
+            selector: '.slide-show .ss-images-size',
             content: `height:${imagesHeightMobile};`
           }
         ])
@@ -43,7 +43,7 @@ class Images extends React.PureComponent {
         addStyleToHead(
           [
             {
-              selector: '.slide-show .images-size',
+              selector: '.slide-show .ss-images-size',
               content: `width:${imagesWidth};height:${imagesHeight};`
             }
           ],
@@ -55,7 +55,7 @@ class Images extends React.PureComponent {
         addStyleToHead(
           [
             {
-              selector: '.slide-show .images-size',
+              selector: '.slide-show .ss-images-size',
               content: `width:${imagesWidth};`
             }
           ],
@@ -144,10 +144,12 @@ class Images extends React.PureComponent {
 
     return (
       <div
-        className={`images images-size${fixedImagesHeight ? " fixed-height" : ""}`}
+        className={
+          `ss-images ss-images-size${fixedImagesHeight ? " ss-fixed-height" : ""}`
+        }
       >
         <div
-          className={`images-track${isSwiping ? " swiping" : ""}`}
+          className={`ss-images-track${isSwiping ? " ss-swiping" : ""}`}
           style={imagesTrackStyle}
           ref={imagesTrack => { this.imagesTrack = imagesTrack }}
           onTouchStart={this.handleTouchImage}
@@ -157,7 +159,7 @@ class Images extends React.PureComponent {
           onClick={this.handleTouchImage}
         >
           {images.map((v, i) => (
-            <div className="images-size slide-image" key={i}>
+            <div className="ss-images-size ss-slide-image" key={i}>
               <img src={v} onLoad={this.handleLoaded} />
             </div>
           ))}

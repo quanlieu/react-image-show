@@ -20,7 +20,7 @@ class Thumbnails extends React.PureComponent {
 
     styleNodes.push(addStyleToHead(
       {
-        selector: '.slide-show .thumbnails',
+        selector: '.slide-show .ss-thumbnails',
         content: `width:${thumbnailsWidth};`
       },
       mediaString
@@ -67,20 +67,23 @@ class Thumbnails extends React.PureComponent {
     const { images, activeIndex } = this.props;
     const { thumbnailsTrackStyle } = this.state;
     return (
-      <div className="thumbnails">
+      <div className="ss-thumbnails">
         <div
-          className="thumbnails-track" style={thumbnailsTrackStyle}
+          className="ss-thumbnails-track" style={thumbnailsTrackStyle}
           ref={thumbnailsTrack => { this.thumbnailsTrack = thumbnailsTrack }}
         >
           {images.map((v, i) => {
             return (
               <div
                 key={i}
-                className="thumbnail"
+                className="ss-thumbnail"
                 onClick={this.handleImageClick}
                 data-index={i}
               >
-                <img src={v} alt="" className={activeIndex === i ? "active" : ""} />
+                <img
+                  src={v} alt=""
+                  className={activeIndex === i ? "ss-active" : ""}
+                />
               </div>
             )
           })}

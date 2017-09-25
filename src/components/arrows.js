@@ -21,12 +21,12 @@ const Arrows = props => {
   const backArrow = '8.165,25 25,0 0,25 25,50 8.165,25';
   const nextArrow = '16.835,25 0,50 25,25 0,0 16.835,25';
   return (
-    <div className="arrows">
-      <span className="arrow-left" onClick={onLeftClick}>
+    <div className="ss-arrows">
+      <span className="ss-arrow-left" onClick={onLeftClick}>
         <Arrow direction="left" />
       </span>
-      <span className="arrow-right" onClick={onRightClick}>
-        <Arrow direction="right" />
+      <span className="ss-arrow-right" onClick={onRightClick}>
+        <Arrow direction="ss-right" />
       </span>
     </div>
   );
