@@ -13,10 +13,22 @@ TODO
 ## Example
 
 ```js
+import React from 'react';
+import SlideShow from 'react-image-show';
+
 class MyComponent extends React.Component {
   render() {
     return (
-      <div />
+      <SlideShow
+        images={urlArray}
+        width="920px"
+        imagesWidth="800px"
+        imagesHeight="450px"
+        imagesHeightMobile="56vw"
+        thumbnailsWidth="920px"
+        thumbnailsHeight="12vw"
+        indicators thumbnails fixedImagesHeight
+      />
     );
   }
 
