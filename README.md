@@ -8,7 +8,7 @@ Simple React images slide show (carousel)
 
 ## Demo
 
-TODO
+Check out demo [online](https://quanlieu.github.io/react-image-show/)
 
 ## Example
 
@@ -53,5 +53,5 @@ class MyComponent extends React.Component {
 
 ##  Polyfill
 
-For IE = 10, need dataset polyfill
-Check out [`Moderndize Wiki page`] (https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills)
+For IE = 10, need dataset polyfill.
+Check out [Moderndize Wiki page](https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-Browser-Polyfills)
