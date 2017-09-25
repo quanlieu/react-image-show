@@ -59,4 +59,4 @@ typings/
 
 # Build directory
 build/
-example-build/
+dev-build/

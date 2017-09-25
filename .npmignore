@@ -1,6 +1,6 @@
-example/
+dev/
 src/
-example-build/
+dev-build/
 webpack.config.dev.js
 webpack.config.prod.js
 postcss.config.js

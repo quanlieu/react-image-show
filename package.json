@@ -5,7 +5,7 @@
   "main": "build/index.js",
   "scripts": {
     "dev": "webpack-dev-server --config webpack.config.dev.js",
-    "build-example": "webpack --config webpack.config.dev.js",
+    "dev-build": "webpack --config webpack.config.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack -p --config webpack.config.prod.js",
     "prepublish": "npm run build"
