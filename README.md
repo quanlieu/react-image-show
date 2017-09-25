@@ -1,10 +1,10 @@
-# Title (Not yet)
+# React image show
 
-Simple React images carousel
+Simple React images slide show (carousel)
 
 ## Install
 
-`npm -i title-place-holder`
+`npm -i react-image-show`
 
 ## Demo
 
