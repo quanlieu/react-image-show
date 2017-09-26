@@ -90,10 +90,6 @@ class SlideShow extends React.PureComponent {
     return (
       <div>
         <div className="slide-show slide-show-size">
-          {arrows && <Arrows
-            onLeftClick={this.handleLeftClick}
-            onRightClick={this.handleRightClick}
-          />}
           <Images
             images={images}
             activeIndex={activeIndex}
@@ -104,12 +100,16 @@ class SlideShow extends React.PureComponent {
             imagesHeight={imagesHeight}
             imagesHeightMobile={imagesHeightMobile}
           />
+          {arrows && <Arrows
+            onLeftClick={this.handleLeftClick}
+            onRightClick={this.handleRightClick}
+          />}
           {indicators && <Indicators
             count={length} activeIndex={activeIndex}
             onClick={this.handleIndicatorClick}
           />}
         </div>
-        {thumbnails && <div className="slide-show slide-show-size">
+        {thumbnails && <div className="slide-show">
           <Thumbnails
             images={images}
             thumbnailsWidth={thumbnailsWidth}
