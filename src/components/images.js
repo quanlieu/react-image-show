@@ -9,7 +9,7 @@ class Images extends React.PureComponent {
 
     
     this.state = {
-      isSwiping: false,
+      noTransition: false,
       imagesTrackStyle: {}
     }
 
@@ -103,7 +103,7 @@ class Images extends React.PureComponent {
       swiped: 0
     }
 
-    this.setState({isSwiping: true})
+    this.setState({noTransition: true})
   }
 
   handleMoveImage(e) {
@@ -129,18 +129,18 @@ class Images extends React.PureComponent {
       imagesTrack.style.transform = `translateX(${translateStartX}px)`;
     }
 
-    this.setState({isSwiping: false });
+    this.setState({noTransition: false });
   }
 
   handleTouchCancel(e) {
     e.currentTarget.style.transform =
       `translateX(${this.startingSwipeStatus.translateStartX}px)`;
-    this.setState({isSwiping: false});
+    this.setState({noTransition: false});
   }
 
   render() {
     const { activeIndex, images, fixedImagesHeight } = this.props;
-    const { isSwiping, imagesTrackStyle, m } = this.state;
+    const { noTransition, imagesTrackStyle } = this.state;
 
     return (
       <div
@@ -149,7 +149,7 @@ class Images extends React.PureComponent {
         }
       >
         <div
-          className={`ss-images-track${isSwiping ? " ss-swiping" : ""}`}
+          className={`ss-images-track${noTransition ? " ss-no-transition" : ""}`}
           style={imagesTrackStyle}
           ref={imagesTrack => { this.imagesTrack = imagesTrack }}
           onTouchStart={this.handleTouchImage}
