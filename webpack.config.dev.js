@@ -5,7 +5,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   template: './dev/index.html',
   filename: 'index.html',
   inject: 'body'
-})
+});
 
 module.exports = {
   entry: './dev/index',
@@ -15,7 +15,8 @@ module.exports = {
   },
   devtool: 'cheap-module-inline-source-map',
   devServer: {
-    host: '0.0.0.0'
+    port: 3000,
+    open: true
   },
   module: {
     rules: [
@@ -25,8 +26,12 @@ module.exports = {
         use: ['style-loader', 'css-loader', 'less-loader', 'postcss-loader'],
         exclude: /node_modules/
       },
-      { test: /\.(png|svg|jpg|gif)$/, use: ['file-loader'], exclude: /node_modules/}
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader'],
+        exclude: /node_modules/
+      }
     ]
   },
   plugins: [HtmlWebpackPluginConfig]
-}
+};
