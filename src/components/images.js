@@ -7,7 +7,6 @@ class Images extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    
     this.state = {
       noTransition: false,
       imagesTrackStyle: {}
@@ -160,7 +159,7 @@ class Images extends React.PureComponent {
         >
           {images.map((v, i) => (
             <div className="ss-images-size ss-slide-image" key={i}>
-              <img src={v} onLoad={this.handleLoaded} />
+              <img src={v} onLoad={i === 0 && this.handleLoaded} />
             </div>
           ))}
         </div>
