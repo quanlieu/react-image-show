@@ -4,13 +4,18 @@ import Indicators from './components/indicators';
 import Images from './components/images';
 import Thumbnails from './components/thumbnails';
 import { addStyleToHead, removeStyleFromHead } from './utils/style-sheet.js';
+import { NORMAL, FIRST_TO_LAST, LAST_TO_FIRST } from './utils/constants.js';
 import './less/index.less';
 
 class SlideShow extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    // navigateStatus can be NORMAL, FIRST_TO_LAST or LAST_TO_FIRST to indicate that
+    //   the navigation's just made is normal, or go from first image to last image ...
     this.state = {
-      activeIndex: 0
+      activeIndex: 0,
+      navigateStatus: NORMAL
     };
 
     this.styleNodes = this.createCss(props);
@@ -19,6 +24,7 @@ class SlideShow extends React.PureComponent {
     this.handleRightClick = this.handleRightClick.bind(this);
     this.handleIndicatorClick = this.handleIndicatorClick.bind(this);
     this.goTo = this.goTo.bind(this);
+    this.updateNavigationStatus = this.updateNavigationStatus.bind(this);
   }
 
   createCss(props) {
@@ -49,21 +55,22 @@ class SlideShow extends React.PureComponent {
     if (activeIndex !== 0) {
       this.goTo(this.state.activeIndex - 1);
     }
-    // else {
-    //   this.goTo(length - 1);
-    // }
+    else if (this.props.infinite) {
+      this.goTo(this.props.images.length - 1);
+      this.navigateStatus = FIRST_TO_LAST;
+    }
   }
 
   handleRightClick() {
     const { activeIndex } = this.state;
-    const { length } = this.props.images;
 
-    if (activeIndex !== length - 1) {
-      this.goTo(this.state.activeIndex + 1);
+    if (activeIndex !== this.props.images.length - 1) {
+      this.goTo(activeIndex + 1);
     }
-    // else {
-    //   this.goTo(0);
-    // }
+    else if (this.props.infinite) {
+      this.goTo(0);
+      this.navigateStatus = LAST_TO_FIRST;
+    }
   }
 
   handleIndicatorClick(e) {
@@ -74,9 +81,13 @@ class SlideShow extends React.PureComponent {
     this.setState({activeIndex});
   }
 
+  updateNavigationStatus(nextStatus) {
+    this.navigateStatus = nextStatus;
+  }
+
   render() {
     const {
-      images, indicators, thumbnails, arrows, fixedImagesHeight, 
+      images, indicators, thumbnails, arrows, fixedImagesHeight, infinite,
       imagesWidth, imagesHeight, imagesHeightMobile, thumbnailsWidth
     } = this.props;
     const { activeIndex } = this.state;
@@ -95,10 +106,14 @@ class SlideShow extends React.PureComponent {
             activeIndex={activeIndex}
             onGoLeft={this.handleLeftClick}
             onGoRight={this.handleRightClick}
+            goTo={this.goTo}
             fixedImagesHeight={fixedImagesHeight}
             imagesWidth={imagesWidth}
             imagesHeight={imagesHeight}
             imagesHeightMobile={imagesHeightMobile}
+            infinite={infinite}
+            navigateStatus={this.navigateStatus}
+            updateNavigationStatus={this.updateNavigationStatus}
           />
           {arrows && <Arrows
             onLeftClick={this.handleLeftClick}
@@ -134,7 +149,8 @@ SlideShow.defaultProps = {
   arrows: true,
   fixedImagesHeight: false,
   indicators: false,
-  thumbnails: false
+  thumbnails: false,
+  infinite: false
 };
 
 export default SlideShow

@@ -19,7 +19,8 @@ export default class Dev extends React.PureComponent {
       isShowIndicators: true,
       isShowThumbnails: true,
       isShowArrows: true,
-      isShowFixedHeight: true
+      isShowFixedHeight: true,
+      isInfinite: true
     }
 
     this.handleCheckbox = this.handleCheckbox.bind(this);
@@ -32,7 +33,7 @@ export default class Dev extends React.PureComponent {
 
   render() {
     const {
-      isShowIndicators, isShowThumbnails, isShowArrows, isShowFixedHeight
+      isShowIndicators, isShowThumbnails, isShowArrows
     } = this.state
     
     return (
@@ -85,36 +86,14 @@ export default class Dev extends React.PureComponent {
               </td>
               <td></td>
             </tr>
-            <tr>
-              <td>
-                <label htmlFor="isShowFixedHeight">Fixed height</label>
-              </td>
-              <td>
-                <input
-                  name="isShowFixedHeight"
-                  id="isShowFixedHeight"
-                  type="checkbox"
-                  checked={isShowFixedHeight}
-                  onChange={this.handleCheckbox}
-                />
-              </td>
-              <td></td>
-            </tr>
           </tbody>
         </table>
-        {isShowFixedHeight && <SlideShow
+        <SlideShow
           images={this.images}
           indicators={isShowIndicators}
           thumbnails={isShowThumbnails}
           arrows={isShowArrows}
-          fixedImagesHeight
-        />}
-        {!isShowFixedHeight &&<SlideShow
-          images={this.images}
-          indicators={isShowIndicators}
-          thumbnails={isShowThumbnails}
-          arrows={isShowArrows}
-        />}
+        />
       </div>
     );
   }
