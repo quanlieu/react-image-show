@@ -14,32 +14,41 @@ export default class Dev extends React.PureComponent {
   constructor(props) {
     super(props);
     this.images = [m01, m02, m03, m04, m05, m06, m07, m08, m09];
+    this.NORMAL = 'NORMAL';
+    this.FIXED_HEIGHT = 'FIXED_HEIGHT';
+    this.INFINITE = 'INFINITE';
+    this.FIXED_INFINITE = 'FIXED_INFINITE';
 
     this.state = {
       isShowIndicators: true,
       isShowThumbnails: true,
       isShowArrows: true,
-      isShowFixedHeight: true,
-      isInfinite: true
+      sliderType: this.FIXED_HEIGHT
     }
 
     this.handleCheckbox = this.handleCheckbox.bind(this);
+    this.handleRadio = this.handleRadio.bind(this);
+    this.renderSettingTable = this.renderSettingTable.bind(this);
   }
 
   handleCheckbox(e) {
     const { name } = e.currentTarget;
-    this.setState({[name]: !this.state[name]})
+    this.setState({[name]: !this.state[name]});
   }
 
-  render() {
+  handleRadio(e) {
+    this.setState({sliderType: e.currentTarget.id});
+  }
+
+  renderSettingTable() {
     const {
-      isShowIndicators, isShowThumbnails, isShowArrows
+      isShowIndicators, isShowThumbnails, isShowArrows, sliderType
     } = this.state
-    
+
     return (
       <div>
-        <h1>Adjust some of these setting</h1>
-        <table>
+        <h1 className="text-center">Try these settings</h1>
+        <table className="margin-auto">
           <tbody>
             <tr>
               <td>
@@ -54,7 +63,18 @@ export default class Dev extends React.PureComponent {
                   onChange={this.handleCheckbox}
                 />
               </td>
-              <td></td>
+              <td>
+                <label htmlFor={this.NORMAL}>Normal slider</label>
+              </td>
+              <td>
+                <input
+                  name="sliderType"
+                  id={this.NORMAL}
+                  type="radio"
+                  checked={sliderType === this.NORMAL}
+                  onChange={this.handleRadio}
+                />
+              </td>
             </tr>
             <tr>
               <td>
@@ -69,7 +89,18 @@ export default class Dev extends React.PureComponent {
                   onChange={this.handleCheckbox}
                 />
               </td>
-              <td></td>
+              <td>
+                <label htmlFor={this.FIXED_HEIGHT}>Fixed height</label>
+              </td>
+              <td>
+                <input
+                  name="sliderType"
+                  id={this.FIXED_HEIGHT}
+                  type="radio"
+                  checked={sliderType === this.FIXED_HEIGHT}
+                  onChange={this.handleRadio}
+                />
+              </td>
             </tr>
             <tr>
               <td>
@@ -84,16 +115,79 @@ export default class Dev extends React.PureComponent {
                   onChange={this.handleCheckbox}
                 />
               </td>
-              <td></td>
+              <td>
+                <label htmlFor={this.INFINITE}>Infinite scrolling</label>
+              </td>
+              <td>
+                <input
+                  name="sliderType"
+                  id={this.INFINITE}
+                  type="radio"
+                  checked={sliderType === this.INFINITE}
+                  onChange={this.handleRadio}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td></td><td></td>
+              <td>
+                <label htmlFor={this.FIXED_INFINITE}>Infinite and fixed</label>
+              </td>
+              <td>
+                <input
+                  name="sliderType"
+                  id={this.FIXED_INFINITE}
+                  type="radio"
+                  checked={sliderType === this.FIXED_INFINITE}
+                  onChange={this.handleRadio}
+                />
+              </td>
             </tr>
           </tbody>
         </table>
-        <SlideShow
-          images={this.images}
-          indicators={isShowIndicators}
-          thumbnails={isShowThumbnails}
-          arrows={isShowArrows}
-        />
+      </div>
+    );
+  }
+
+  render() {
+    const { sliderType } = this.state;
+
+    const sliderStatus = {
+      indicators: this.state.isShowIndicators,
+      thumbnails: this.state.isShowThumbnails,
+      arrows: this.state.isShowArrows
+    };
+    
+    return (
+      <div>
+        {this.renderSettingTable()}
+        {sliderType === this.NORMAL && (
+          <SlideShow
+            images={this.images}
+            {...sliderStatus}
+          />
+        )}
+        {sliderType === this.FIXED_HEIGHT && (
+          <SlideShow
+            images={this.images}
+            {...sliderStatus}
+            fixedImagesHeight
+          />
+        )}
+        {sliderType === this.INFINITE && (
+          <SlideShow
+            images={this.images}
+            {...sliderStatus}
+            infinite
+          />
+        )}
+        {sliderType === this.FIXED_INFINITE && (
+          <SlideShow
+            images={this.images}
+            {...sliderStatus}
+            fixedImagesHeight infinite
+          />
+        )}
       </div>
     );
   }
