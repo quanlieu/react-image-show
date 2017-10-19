@@ -41,6 +41,7 @@ class MyComponent extends React.Component {
 | ----------------  | ------ |          -----------          | ------- |
 | images            | array   | Array of images URL | none |
 | fixedImagesHeight  | bool   | Enables fixed images height mode, fit height and then crop width to main aspect ratio, too narrow images will be center and arrow key navigation | false |
+| infinite           | bool   | Enable infinite scrolling mode | false |
 | indicators         | bool   | Show indicator | false |
 | thumbnails         | bool   | Show thumbnails | false |
 | arrows             | bool   | Show arrows | true |
