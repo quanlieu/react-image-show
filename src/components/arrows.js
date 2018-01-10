@@ -2,9 +2,12 @@ import React from 'react';
 
 const Arrow = props => {
   const { direction } = props;
+  const backArrow = '8.165,25 25,0 0,25 25,50 8.165,25';
+  const nextArrow = '16.835,25 0,50 25,25 0,0 16.835,25';
+  
   const points = direction === 'left'
-    ? '8.165,25 25,0 0,25 25,50 8.165,25'
-    : '16.835,25 0,50 25,25 0,0 16.835,25';
+    ? backArrow
+    : nextArrow;
 
   return (
     <svg
@@ -18,15 +21,13 @@ const Arrow = props => {
 
 const Arrows = props => {
   const { onLeftClick, onRightClick } = props;
-  const backArrow = '8.165,25 25,0 0,25 25,50 8.165,25';
-  const nextArrow = '16.835,25 0,50 25,25 0,0 16.835,25';
   return (
     <div className="ss-arrows">
       <span className="ss-arrow-left" onClick={onLeftClick}>
         <Arrow direction="left" />
       </span>
       <span className="ss-arrow-right" onClick={onRightClick}>
-        <Arrow direction="ss-right" />
+        <Arrow direction="right" />
       </span>
     </div>
   );
