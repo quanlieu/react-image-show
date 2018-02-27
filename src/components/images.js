@@ -221,7 +221,7 @@ class Images extends React.PureComponent {
           )}
           {images.map((v, i) => (
             <div className="ss-images-size ss-slide-image" key={i}>
-              <img src={v} onLoad={i === 0 && this.handleLoaded} />
+              <img src={v} onLoad={i === 0 ? this.handleLoaded : undefined} />
             </div>
           ))}
           {infinite && (
