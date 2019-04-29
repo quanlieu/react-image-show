@@ -22,6 +22,8 @@ class Images extends React.PureComponent {
     this.handleTouchEnd = this.handleTouchEnd.bind(this);
     this.handleTouchCancel = this.handleTouchCancel.bind(this);
     this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
+
+    // this.handleClickImage = this.handleClickImage.bind(this);
   }
 
   createCss(props) {
@@ -191,6 +193,10 @@ class Images extends React.PureComponent {
     }
   }
 
+  handleClickImage = (index) => (e) => {
+    this.props.onImageClick(index);
+  }
+
   render() {
     const { images, fixedImagesHeight, infinite } = this.props;
     const { noTransition, imagesTrackStyle } = this.state;
@@ -220,7 +226,7 @@ class Images extends React.PureComponent {
             </div>
           )}
           {images.map((v, i) => (
-            <div className="ss-images-size ss-slide-image" key={i}>
+            <div className="ss-images-size ss-slide-image" key={i} onClick={this.handleClickImage(i)}>
               <img src={v} onLoad={i === 0 ? this.handleLoaded : undefined} />
             </div>
           ))}
