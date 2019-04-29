@@ -23,7 +23,7 @@ class Images extends React.PureComponent {
     this.handleTouchCancel = this.handleTouchCancel.bind(this);
     this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
 
-    // this.handleClickImage = this.handleClickImage.bind(this);
+    this.handleClickImage = this.handleClickImage.bind(this);
   }
 
   createCss(props) {
@@ -193,8 +193,10 @@ class Images extends React.PureComponent {
     }
   }
 
-  handleClickImage = (index) => (e) => {
-    this.props.onImageClick(index);
+  handleClickImage(index) {
+    return (e) => {
+      this.props.onImageClick(e, index);
+    };
   }
 
   render() {
