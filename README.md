@@ -51,6 +51,7 @@ class MyComponent extends React.Component {
 | imagesHeightMobile | string | Height of the images on mobile when fixedImagesHeight is set | 56vw |
 | thumbnailsWidth   | string | Horizontal width of the thumbnails strip, always 100% on mobile | 920px |
 | thumbnailsHeight  | string | Height of thumbnails strip width of the carousel | 12vw |
+| onImageClick      | function | Image click callback | undefined |
 
 ##  Polyfill
 

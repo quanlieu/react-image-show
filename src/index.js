@@ -88,7 +88,9 @@ class SlideShow extends React.PureComponent {
   }
 
   handleClickImage(e, index) {
-    this.props.onImageClick(e, index);
+    if (typeof this.props.onImageClick === 'function') {
+      this.props.onImageClick(e, index);
+    }
   }
 
   render() {
@@ -157,7 +159,8 @@ SlideShow.defaultProps = {
   fixedImagesHeight: false,
   indicators: false,
   thumbnails: false,
-  infinite: false
+  infinite: false,
+  onImageClick: undefined
 };
 
 export default SlideShow
