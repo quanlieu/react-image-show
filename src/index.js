@@ -25,6 +25,8 @@ class SlideShow extends React.PureComponent {
     this.handleIndicatorClick = this.handleIndicatorClick.bind(this);
     this.goTo = this.goTo.bind(this);
     this.updateNavigationStatus = this.updateNavigationStatus.bind(this);
+
+    this.handleClickImage = this.handleClickImage.bind(this);
   }
 
   createCss(props) {
@@ -85,6 +87,10 @@ class SlideShow extends React.PureComponent {
     this.navigateStatus = nextStatus;
   }
 
+  handleClickImage(index) {
+    this.props.onImageClick(index);
+  }
+
   render() {
     const {
       images, indicators, thumbnails, arrows, fixedImagesHeight, infinite,
@@ -114,6 +120,7 @@ class SlideShow extends React.PureComponent {
             infinite={infinite}
             navigateStatus={this.navigateStatus}
             updateNavigationStatus={this.updateNavigationStatus}
+            onImageClick={this.handleClickImage}
           />
           {arrows && <Arrows
             onLeftClick={this.handleLeftClick}
