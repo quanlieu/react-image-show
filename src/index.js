@@ -87,8 +87,8 @@ class SlideShow extends React.PureComponent {
     this.navigateStatus = nextStatus;
   }
 
-  handleClickImage(index) {
-    this.props.onImageClick(index);
+  handleClickImage(e, index) {
+    this.props.onImageClick(e, index);
   }
 
   render() {
