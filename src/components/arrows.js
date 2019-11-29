@@ -20,9 +20,9 @@ const Arrow = props => {
 };
 
 const Arrows = props => {
-  const { onLeftClick, onRightClick } = props;
+  const { onLeftClick, onRightClick, arrowsWidth } = props;
   return (
-    <div className="ss-arrows">
+    <div className="ss-arrows" style={{width: arrowsWidth}}>
       <span className="ss-arrow-left" onClick={onLeftClick}>
         <Arrow direction="left" />
       </span>
