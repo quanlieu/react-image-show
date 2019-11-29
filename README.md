@@ -52,6 +52,7 @@ class MyComponent extends React.Component {
 | thumbnailsWidth   | string | Horizontal width of the thumbnails strip, always 100% on mobile | 920px |
 | thumbnailsHeight  | string | Height of thumbnails strip width of the carousel | 12vw |
 | onImageClick      | function | Image click callback | undefined |
+| arrowWidth       | string | Horizontal width of the arrows - you might want to set it to the same amount as imagesWidth | 920px  |
 
 ##  Polyfill
 
