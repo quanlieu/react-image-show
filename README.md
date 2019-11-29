@@ -1,3 +1,7 @@
+# Note
+
+I lost my npm credential and this package is no longer maintenance.
+
 # React image show
 
 Simple React images slide show (carousel)
