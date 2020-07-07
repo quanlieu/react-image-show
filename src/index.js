@@ -96,7 +96,7 @@ class SlideShow extends React.PureComponent {
   render() {
     const {
       images, indicators, thumbnails, arrows, fixedImagesHeight, infinite,
-      imagesWidth, imagesHeight, imagesHeightMobile, thumbnailsWidth, arrowsWidth
+      imagesWidth, imagesHeight, imagesHeightMobile, thumbnailsWidth
     } = this.props;
     const { activeIndex } = this.state;
 
@@ -127,7 +127,6 @@ class SlideShow extends React.PureComponent {
           {arrows && <Arrows
             onLeftClick={this.handleLeftClick}
             onRightClick={this.handleRightClick}
-            arrowsWidth={arrowsWidth}
           />}
           {indicators && <Indicators
             count={length} activeIndex={activeIndex}
@@ -164,4 +163,4 @@ SlideShow.defaultProps = {
   onImageClick: undefined
 };
 
-export default SlideShow;
+export default SlideShow
